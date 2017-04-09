@@ -21,7 +21,8 @@ myApp.factory('InfoService', ['$http', function($http){
     },
     getOMDB : function(movie){
       $http.get('http://www.omdbapi.com/?t=' + movie + '&y=&plot=full&r=json').then(function(response){
-        console.log(response);
+        infoFromServer.response = response;
+        console.log(infoFromServer.response.data);
       });
     }
   };
