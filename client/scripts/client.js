@@ -1,11 +1,11 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('OneController', ['InfoService', function(InfoService){
-  InfoService.getOMDB();
+myApp.controller('OneController', ['$scope', 'InfoService', function($scope, InfoService){
+  $scope.getOMDB = InfoService.getOMDB;
 }]);
 
 myApp.controller('TwoController', ['$scope', 'InfoService', function($scope, InfoService){
-  $scope.infoFromServer = InfoService.infoFromServer;
+    $scope.infoFromServer = InfoService.infoFromServer;
 }]);
 
 myApp.factory('InfoService', ['$http', function($http){
@@ -19,8 +19,7 @@ myApp.factory('InfoService', ['$http', function($http){
         infoFromServer.response = response;
       });
     },
-    getOMDB : function(){
-      var movie = 'The Dark Knight';
+    getOMDB : function(movie){
       $http.get('http://www.omdbapi.com/?t=' + movie + '&y=&plot=full&r=json').then(function(response){
         console.log(response);
       });

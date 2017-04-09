@@ -13,6 +13,8 @@
   </head>
   <body>
     <div ng-controller="OneController">
+      <input type="text" ng-model="moviename">
+      <button class="btn btn-info" ng-click="getOMDB(moviename)">Search Movie</button>
     </div>
 
     <div ng-controller="TwoController">
