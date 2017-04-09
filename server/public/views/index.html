@@ -18,7 +18,18 @@
     </div>
 
     <div ng-controller="TwoController">
-      <p> {{ infoFromServer.response.data.Title }} </p>
+      <div class="row">
+        <div class="col-md-4">
+          <img ng-src="{{infoFromServer.response.data.Poster}}" />
+        </div>
+        <div class="col-md-8">
+          <p> {{ infoFromServer.response.data.Title }} </p>
+          <p> {{ infoFromServer.response.data.Year }} </p>
+          <p> {{ infoFromServer.response.data.Director }} </p>
+          <p> {{ infoFromServer.response.data.Genre }} </p>
+          <p> {{ infoFromServer.response.data.Plot }} </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
