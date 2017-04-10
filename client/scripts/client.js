@@ -10,9 +10,10 @@ myApp.controller('TwoController', ['$scope', 'InfoService', function($scope, Inf
     $scope.movie = {};
 
     $scope.addToFav = function(){
-      $scope.movie.Title = $scope.infoFromServer.response.data.Title;
-      $scope.movie.Poster = $scope.infoFromServer.response.data.Poster;
+      $scope.movie = angular.copy($scope.infoFromServer.response.data);
+
       InfoService.addFavorite($scope.movie);
+      InfoService.clearMovie(InfoService.infoFromServer);
     };
 }]);
 
@@ -42,6 +43,9 @@ myApp.factory('InfoService', ['$http', function($http){
     addFavorite : function(movie){
       favoriteList.push(movie);
       console.log(favoriteList);
+    },
+    clearMovie : function(info){
+      infoFromServer.response = null;
     }
   };
 }]);
